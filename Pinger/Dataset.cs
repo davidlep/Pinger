@@ -31,6 +31,7 @@ namespace Pinger
             using (var csv = new CsvWriter(writer, config))
             {
                 csv.WriteRecord(record);
+                csv.NextRecord();
             }
         }
 

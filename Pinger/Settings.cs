@@ -9,7 +9,7 @@ namespace Pinger
         public static readonly string FileName = Environment.CurrentDirectory + @"\settings.json";
 
         public string host { get; set; } = "www.google.ca";
-        public int frequencyInSec { get; set; } = 3;
+        public int frequencyInSec { get; set; } = 60;
 
         public static Settings Read()
         {
@@ -18,7 +18,7 @@ namespace Pinger
 
         public static void Write(Settings settings)
         {
-            File.WriteAllText(FileName, JsonSerializer.Serialize(settings));
+            File.WriteAllText(FileName, JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true }));
         }
 
         public static void Init()
