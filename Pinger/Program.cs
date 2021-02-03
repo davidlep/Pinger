@@ -1,0 +1,23 @@
+using System;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Pinger
+{
+    static class Program
+    {
+        /// <summary>
+        ///  The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            Task.Run(() => new PingerCore().Collect());
+
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new PingerAppContext());
+        }
+    }
+}
